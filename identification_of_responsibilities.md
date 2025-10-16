@@ -71,7 +71,7 @@ As a student, I want to be able to cancel an existing enrollment, so that I can 
 
 ### Feature: Student profile update
 
-As a student, I want to be able to view and edit my profile, to see and correct my personal information without physicically going to student department office.
+As a student, I want to be able to view and edit my profile, to see and correct my personal information without physically going to student department office.
 
 #### Feature Breakdown:
 
