@@ -149,17 +149,19 @@ As a teacher, I want a way to e-mail my enrolled students, to easily provide the
 
 #### Responsibilities
 
-##### Communication management interface
+##### Communication management responsibilities
 - Provide access to the “Course Communication” section.
 - Display enrolled students and allow filtering or selection.
-- Support single or group message targeting.
+- Support single and group message targeting.
 
-##### Message composition and automation
+##### Automation responsibilities
 - Enable writing messages or selecting templates.
+- Allow file and image attachments in the message.
+- Optionally allow to automatically add the teacher signature at the end of the message.
 - Auto-fill course and recipient details according to the information from the lecture page/ details panel.
 - Validate message content and recipient list.
 
-##### Email sending and logging
+##### Notification responsibilities
 - Send emails through the system mail service.
 - Confirm delivery status to the teacher.
 - Log communication events for auditing.
@@ -179,17 +181,17 @@ As a student department officer (SDO), I need the system to automatically lock e
 
 #### Responsibilities
 
-##### Enrollment period management
+##### Enrollment responsibilities
 - Allow SDO to set or modify enrollment closing dates.
 - Schedule automatic system actions based on deadlines.
 - Validate configuration changes.
 
-##### Automated locking and processing
+##### Automated processing responsibilities
 - Send pre-closure, closure, and post-closure notifications.
 - Disable new enrollments or modifications after deadline.
 - Process pending enrollments before full lock.
 
-##### Notifications and override
+##### Notifications and override responsibilities
 - Send confirmation emails to affected students and teachers.
 - Allow SDO to manually reopen or extend enrollment.
 - Record all actions in the audit log.
@@ -211,17 +213,20 @@ As a student department officer, I want to export student information, so I can 
 
 #### Responsibilities
 
-##### Data export configuration
+##### Data export responsibilities
 - Provide access to the “Data Export” section.
 - Display available data categories for selection.
-- Allow choosing export format (CSV, XLSX, PDF).
+- Allow to export in whichever format (CSV, XLSX, PDF).
 
-##### Data generation and validation
+##### Data validation responsibilities
 - Verify access permissions and visibility rules.
 - Compile and anonymize selected data fields.
+- Allow to only export selected data.
 - Generate the export file in the chosen format.
 
-##### Delivery and auditing
+##### Confirmation respnosibilities
 - Enable file download for SDO.
 - Log the export event for compliance and tracking.
-- Notify user of successful export completion.
+- Show the progress of the export.
+- Notify the user of successful export completion.
+- Generate concise file name according to some predefined criteria (Year, Category, etc.).
