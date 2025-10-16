@@ -85,20 +85,23 @@ As a student, I want to be able to view and edit my profile, to see and correct 
 
 #### Responsibilities
 
-1. User interface (UI) interaction and navigation
-    - Provide access to the personal information page.
-    - Display stored profile data and enable edit mode.
-    - Indicate editable fields visually.
+##### Profile Retrieval Responsibilities
+- Request profile data
+- Display stored profile data and enable edit mode.
 
-2. Profile data modification and validation
-    - Accept and validate changes to editable fields.
-    - Check for restricted or sensitive data modifications.
-    - Save validated changes to the database.
+##### Profile Editting Responsibilities
+- Provide profile's editting fields
+- Save validated changes to the database.
 
-3. Confirmation and notifications
-    - Notify the SDO when sensitive data (e.g., IBAN, contact email) changes.
-    - Confirm successful update via pop-up and email.
-    - Log all profile changes for compliance.
+##### Profile Change Validation Responsibilities
+- Validate changes to editable fields.
+- Indicate editable fields.
+- Check for restricted or sensitive data modifications.
+- Log all profile changes for compliance.
+
+##### Notification responsitilities
+- Notify the SDO when sensitive data (e.g., IBAN, contact email) changes.
+- Send profile change summary notification to email
 
 ### Feature: Teacher’s lectures management
 
