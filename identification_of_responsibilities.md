@@ -50,20 +50,23 @@ As a student, I want to be able to cancel an existing enrollment, so that I can 
 
 #### Responsibilities
 
-1. User interface (UI) interaction and navigation
-    - Provide access to the list of enrolled courses.
-    - Allow student to select the course for cancellation.
-    - Confirm intent before proceeding.
+##### Cancellation processing responsibilities
+- Update course capacity and student list.
+- Log the cancellation event for auditing.
+- Remove cancelled course from student's schedule
+- Update student capacity and info of tickets for the cancelled enrollment
 
-2. Enrollment cancellation processing
-    - Validate that the enrollment exists and can be canceled.
-    - Update course capacity and student list.
-    - Log the cancellation event for auditing.
+##### Notification responsibilities
+- Send confirmation via notification or email.
 
-3. Confirmation and notification
-    - Update the student’s schedule to remove the course.
-    - Send confirmation via notification or email.
-    - Persist all changes to the database.
+##### Course listing responsibilities
+- Provide access to the list of enrolled courses.
+- Allow course selection for cancellation.
+
+##### Cancellation validation responsitilities
+- Validate that the enrollment exists and can be canceled.
+- Validate compliance with faculty rules for cancellation
+- Block cancellations during non-enrollment times
 
 ### Feature: Student profile update
 
