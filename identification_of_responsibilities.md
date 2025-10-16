@@ -16,6 +16,31 @@ As a student, I want a way to formally enroll in my courses, to be able to atten
 
 #### Responsibilities
 
+1. User interface (UI) interaction and navigation
+    - Provide access to the enrollment section and verify user session.
+    - Load available courses from the database.
+    - Log access for auditing.
+
+2. Course availability retrieval
+    - Fetch lecture and practical sessions for the chosen course.
+    - Filter out full or inactive sessions.
+    - Display available options in a clear format.
+
+3. User input capture and validation
+    - Allow student to select one or more session tickets.
+    - Validate selections and check for time conflicts.
+    - Store valid selections for enrollment processing.
+
+4. Enrollment validation and processing
+    - Verify prerequisites and remaining course capacity.
+    - Execute enrollment transaction safely.
+    - Update student enrollment records.
+
+5. Schedule update and confirmation
+    - Update the student’s schedule with new sessions.
+    - Send confirmation via notification or email.
+    - Persist all changes in the database.
+
 ### Feature: Student’s cancellation of enrollment
 
 As a student, I want to be able to cancel an existing enrollment, so that I can reflect real changes in my plan.
@@ -28,6 +53,21 @@ As a student, I want to be able to cancel an existing enrollment, so that I can 
 4. The system confirms cancellation to the student via notification/email.
 
 #### Responsibilities
+
+1. User interface (UI) interaction and navigation
+    - Provide access to the list of enrolled courses.
+    - Allow student to select the course for cancellation.
+    - Confirm intent before proceeding.
+
+2. Enrollment cancellation processing
+    - Validate that the enrollment exists and can be canceled.
+    - Update course capacity and student list.
+    - Log the cancellation event for auditing.
+
+3. Confirmation and notification
+    - Update the student’s schedule to remove the course.
+    - Send confirmation via notification or email.
+    - Persist all changes to the database.
 
 ### Feature: Student profile update
 
@@ -46,6 +86,21 @@ As a student, I want to be able to view and edit my profile, to see and correct 
 
 #### Responsibilities
 
+1. User interface (UI) interaction and navigation
+    - Provide access to the personal information page.
+    - Display stored profile data and enable edit mode.
+    - Indicate editable fields visually.
+
+2. Profile data modification and validation
+    - Accept and validate changes to editable fields.
+    - Check for restricted or sensitive data modifications.
+    - Save validated changes to the database.
+
+3. Confirmation and notifications
+    - Notify the SDO when sensitive data (e.g., IBAN, contact email) changes.
+    - Confirm successful update via pop-up and email.
+    - Log all profile changes for compliance.
+
 ### Feature: Teacher’s lectures management
 
 As a teacher, I want a way to create and manage my lectures, so that can I plan and officially set up my lectures.
@@ -59,6 +114,21 @@ As a teacher, I want a way to create and manage my lectures, so that can I plan 
 5. The system confirms successful creation or displays error messages.
 
 #### Responsibilities
+
+1. User interface (UI) interaction and navigation
+    - Provide access to lecture management tools.
+    - Display existing lectures and allow creation or editing.
+    - Validate teacher authentication and permissions.
+
+2. Lecture creation and modification
+    - Accept input for lecture details (time, capacity, type).
+    - Check for time conflicts and invalid entries.
+    - Save new or updated lectures to the database.
+
+3. Confirmation and feedback
+    - Display success or error messages after submission.
+    - Update the teacher’s lecture list dynamically.
+    - Log all lecture changes for reference.
 
 ### Feature: Teacher – Communication via Email
 
@@ -74,6 +144,21 @@ As a teacher, I want a way to e-mail my enrolled students, to easily provide the
 
 #### Responsibilities
 
+1. Communication management interface
+    - Provide access to the “Course Communication” section.
+    - Display enrolled students and allow filtering or selection.
+    - Support single or group message targeting.
+
+2. Message composition and automation
+    - Enable writing messages or selecting templates.
+    - Auto-fill course and recipient details.
+    - Validate message content and recipient list.
+
+3. Email sending and logging
+    - Send emails through the system mail service.
+    - Confirm delivery status to the teacher.
+    - Log communication events for auditing.
+
 ### Feature: Enrollment Lock and Notifications
 
 As a student department officer (SDO), I need the system to automatically lock enrollments and send notifications before and after the processing period, to ensure deadlines are followed.
@@ -88,6 +173,21 @@ As a student department officer (SDO), I need the system to automatically lock e
 6. SDO can manually reopen or extend enrollment if needed.
 
 #### Responsibilities
+
+1. Enrollment period management
+    - Allow SDO to set or modify enrollment closing dates.
+    - Schedule automatic system actions based on deadlines.
+    - Validate configuration changes.
+
+2. Automated locking and processing
+    - Send pre-closure, closure, and post-closure notifications.
+    - Disable new enrollments or modifications after deadline.
+    - Process pending enrollments before full lock.
+
+3. Notifications and override
+    - Send confirmation emails to affected students and teachers.
+    - Allow SDO to manually reopen or extend enrollment.
+    - Record all actions in the audit log.
 
 ### Feature: Export of Student Personal Data
 
@@ -106,3 +206,17 @@ As a student department officer, I want to export student information, so I can 
 
 #### Responsibilities
 
+1. Data export configuration
+    - Provide access to the “Data Export” section.
+    - Display available data categories for selection.
+    - Allow choosing export format (CSV, XLSX, PDF).
+
+2. Data generation and validation
+    - Verify access permissions and visibility rules.
+    - Compile and anonymize selected data fields.
+    - Generate the export file in the chosen format.
+
+3. Delivery and auditing
+    - Enable file download for SDO.
+    - Log the export event for compliance and tracking.
+    - Notify user of successful export completion.
