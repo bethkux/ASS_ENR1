@@ -117,20 +117,21 @@ As a teacher, I want a way to create and manage my lectures, so that can I plan 
 
 #### Responsibilities
 
-1. User interface (UI) interaction and navigation
-    - Provide access to lecture management tools.
-    - Display existing lectures and allow creation or editing.
-    - Validate teacher authentication and permissions.
+##### Lecture Management Responsibilities
+- Facilitate creation of new lectures
+- Display existing lectures
+- Allow editting of existing lectures
+- Update the teacher's list of taught courses
+- Log all lecture changes for reference.
+- Transmit changes to courses to the database.
 
-2. Lecture creation and modification
-    - Accept input for lecture details (time, capacity, type).
-    - Check for time conflicts and invalid entries.
-    - Save new or updated lectures to the database.
+##### Management Authorization Responsibilities
+- Validate teacher permissions.
+- Allow granting permissions to other teachers for managing related course tickets
 
-3. Confirmation and feedback
-    - Display success or error messages after submission.
-    - Update the teacher’s lecture list dynamically.
-    - Log all lecture changes for reference.
+##### Lecture Validation Responsibilities
+- Check for time conflicts and invalid entries.
+- Check for physical capacities of lecture rooms
 
 ### Feature: Teacher – Communication via Email
 
