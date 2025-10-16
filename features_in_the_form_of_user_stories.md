@@ -27,5 +27,5 @@
 ### Enrollment Lock and Notifications
 ⦁	As a student department officer (SDO), I need the system to automatically lock enrollments and send notifications before and after the processing period, to ensure deadlines are followed.
 
-Export of Student Personal Data
+### Export of Student Personal Data
 ⦁	As a student department officer, I want to export student information, so I can share it easily with institutions such as healthcare or government offices.
