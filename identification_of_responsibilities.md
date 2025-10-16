@@ -92,6 +92,7 @@ As a student, I want to be able to view and edit my profile, to see and correct 
 ##### Profile Editting Responsibilities
 - Provide profile's editting fields
 - Save validated changes to the database.
+- Sort the students according to certain criteria (Name, Year, etc.)
 
 ##### Profile Change Validation Responsibilities
 - Validate changes to editable fields.
@@ -124,6 +125,7 @@ As a teacher, I want a way to create and manage my lectures, so that can I plan 
 - Update the teacher's list of taught courses
 - Log all lecture changes for reference.
 - Transmit changes to courses to the database.
+- Notify the affected students of the changes.
 
 ##### Management Authorization Responsibilities
 - Validate teacher permissions.
@@ -147,20 +149,20 @@ As a teacher, I want a way to e-mail my enrolled students, to easily provide the
 
 #### Responsibilities
 
-1. Communication management interface
-    - Provide access to the “Course Communication” section.
-    - Display enrolled students and allow filtering or selection.
-    - Support single or group message targeting.
+##### Communication management interface
+- Provide access to the “Course Communication” section.
+- Display enrolled students and allow filtering or selection.
+- Support single or group message targeting.
 
-2. Message composition and automation
-    - Enable writing messages or selecting templates.
-    - Auto-fill course and recipient details.
-    - Validate message content and recipient list.
+##### Message composition and automation
+- Enable writing messages or selecting templates.
+- Auto-fill course and recipient details according to the information from the lecture page/ details panel.
+- Validate message content and recipient list.
 
-3. Email sending and logging
-    - Send emails through the system mail service.
-    - Confirm delivery status to the teacher.
-    - Log communication events for auditing.
+##### Email sending and logging
+- Send emails through the system mail service.
+- Confirm delivery status to the teacher.
+- Log communication events for auditing.
 
 ### Feature: Enrollment Lock and Notifications
 
@@ -177,20 +179,20 @@ As a student department officer (SDO), I need the system to automatically lock e
 
 #### Responsibilities
 
-1. Enrollment period management
-    - Allow SDO to set or modify enrollment closing dates.
-    - Schedule automatic system actions based on deadlines.
-    - Validate configuration changes.
+##### Enrollment period management
+- Allow SDO to set or modify enrollment closing dates.
+- Schedule automatic system actions based on deadlines.
+- Validate configuration changes.
 
-2. Automated locking and processing
-    - Send pre-closure, closure, and post-closure notifications.
-    - Disable new enrollments or modifications after deadline.
-    - Process pending enrollments before full lock.
+##### Automated locking and processing
+- Send pre-closure, closure, and post-closure notifications.
+- Disable new enrollments or modifications after deadline.
+- Process pending enrollments before full lock.
 
-3. Notifications and override
-    - Send confirmation emails to affected students and teachers.
-    - Allow SDO to manually reopen or extend enrollment.
-    - Record all actions in the audit log.
+##### Notifications and override
+- Send confirmation emails to affected students and teachers.
+- Allow SDO to manually reopen or extend enrollment.
+- Record all actions in the audit log.
 
 ### Feature: Export of Student Personal Data
 
@@ -209,17 +211,17 @@ As a student department officer, I want to export student information, so I can 
 
 #### Responsibilities
 
-1. Data export configuration
-    - Provide access to the “Data Export” section.
-    - Display available data categories for selection.
-    - Allow choosing export format (CSV, XLSX, PDF).
+##### Data export configuration
+- Provide access to the “Data Export” section.
+- Display available data categories for selection.
+- Allow choosing export format (CSV, XLSX, PDF).
 
-2. Data generation and validation
-    - Verify access permissions and visibility rules.
-    - Compile and anonymize selected data fields.
-    - Generate the export file in the chosen format.
+##### Data generation and validation
+- Verify access permissions and visibility rules.
+- Compile and anonymize selected data fields.
+- Generate the export file in the chosen format.
 
-3. Delivery and auditing
-    - Enable file download for SDO.
-    - Log the export event for compliance and tracking.
-    - Notify user of successful export completion.
+##### Delivery and auditing
+- Enable file download for SDO.
+- Log the export event for compliance and tracking.
+- Notify user of successful export completion.
