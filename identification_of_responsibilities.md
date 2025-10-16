@@ -16,30 +16,26 @@ As a student, I want a way to formally enroll in my courses, to be able to atten
 
 #### Responsibilities
 
-1. User interface (UI) interaction and navigation
-    - Provide access to the enrollment section and verify user session.
-    - Load available courses from the database.
-    - Log access for auditing.
+##### Course collection responsibilities
+- Load available courses from the database.
+- Fetch lecture and practical sessions for the chosen course.
+- Filter out full or inactive sessions.
+- Display available options in a clear format.
+- Allow student to select one or more session tickets.
 
-2. Course availability retrieval
-    - Fetch lecture and practical sessions for the chosen course.
-    - Filter out full or inactive sessions.
-    - Display available options in a clear format.
+##### Enrollment execution responsibilities
+- Update the student’s schedule with new sessions.
+- Update student enrollment records.
 
-3. User input capture and validation
-    - Allow student to select one or more session tickets.
-    - Validate selections and check for time conflicts.
-    - Store valid selections for enrollment processing.
+##### Notification responsibilities
+- Detect enrollment failures
+- Send confirmation of the result via notification or email.
 
-4. Enrollment validation and processing
-    - Verify prerequisites and remaining course capacity.
-    - Execute enrollment transaction safely.
-    - Update student enrollment records.
-
-5. Schedule update and confirmation
-    - Update the student’s schedule with new sessions.
-    - Send confirmation via notification or email.
-    - Persist all changes in the database.
+##### Enrollment validation responsibilities
+- Verify prerequisites and remaining course capacity.
+- Execute enrollment transaction safely.
+- Validate selections and check for time conflicts.
+- Store valid selections for enrollment processing.
 
 ### Feature: Student’s cancellation of enrollment
 
