@@ -2,4 +2,4 @@
 
 School project for course about architecture of software systems.
 
-![Diagram](resposibilities.png)
+![Diagram](diagram.png)
