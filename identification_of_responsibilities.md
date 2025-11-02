@@ -2,71 +2,38 @@
 
 ## Core Features and Responsibilities
 
-### Feature: Student's request to enroll
+### Feature: Student's enrollment self-management
 
-As a student, I want a way to formally enroll in my courses, to be able to attend classes I need/want.
+As a student, I want a way to manage my enrollments, so that I can formally attend my classes.
 
 #### Feature Breakdown:
 
 1. Student opens the enrollment section for their chosen course.
 2. The system displays available lecture/practical tickets for that course.
-3. Student chooses which ticket(s) to enroll in.
-4. The system validates prerequisites and processes enrollment.
+3. Student selects ticket(s) for enrollment creation/cancellation.
+4. The system validates the request with faculty rules.
 5. The system updates student’s schedule and confirms the change.
+6. The system updates course ticket capacities.
 
 #### Responsibilities
 
 ##### Course collection responsibilities
-- Load available courses from the database.
-- Fetch lecture and practical sessions for the chosen course.
-- Filter out full or inactive sessions.
-- Display available options in a clear format.
-- Allow student to select one or more session tickets.
+- Load courses from the database.
+- Display available course options.
 
 ##### Enrollment execution responsibilities
-- Update the student’s schedule with new sessions.
+- Update the student’s schedule.
 - Update student enrollment records.
+- Update course ticket per enrollment change.
 
 ##### Notification responsibilities
-- Detect enrollment failures
-- Send confirmation of the result via notification or email.
+- Send result confirmation notifications.
 
 ##### Enrollment validation responsibilities
-- Verify prerequisites and remaining course capacity.
+- Validate compliance with faculty rules
+- Verify prerequisites and course capacity.
 - Execute enrollment transaction safely.
-- Validate selections and check for time conflicts.
-- Store valid selections for enrollment processing.
-
-### Feature: Student’s cancellation of enrollment
-
-As a student, I want to be able to cancel an existing enrollment, so that I can reflect real changes in my plan.
-
-#### Feature Breakdown:
-
-1. Student navigates to the list of enrolled courses.
-2. Student selects the course to cancel.
-3. The system updates the course capacity and student list.
-4. The system confirms cancellation to the student via notification/email.
-
-#### Responsibilities
-
-##### Cancellation processing responsibilities
-- Update course capacity and student list.
-- Log the cancellation event for auditing.
-- Remove cancelled course from student's schedule
-- Update student capacity and info of tickets for the cancelled enrollment
-
-##### Notification responsibilities
-- Send confirmation via notification or email.
-
-##### Course listing responsibilities
-- Provide access to the list of enrolled courses.
-- Allow course selection for cancellation.
-
-##### Cancellation validation responsitilities
-- Validate that the enrollment exists and can be canceled.
-- Validate compliance with faculty rules for cancellation
-- Block cancellations during non-enrollment times
+- Check for time conflicts.
 
 ### Feature: Student profile update
 
@@ -134,37 +101,6 @@ As a teacher, I want a way to create and manage my lectures, so that can I plan 
 ##### Lecture Validation Responsibilities
 - Check for time conflicts and invalid entries.
 - Check for physical capacities of lecture rooms
-
-### Feature: Teacher – Communication via Email
-
-As a teacher, I want a way to e-mail my enrolled students, to easily provide them with course-relevant information.
-
-#### Feature Breakdown:
-
-1. Teacher opens the “Course Communication” section.
-2. The system displays a list of all students currently enrolled in the teacher’s courses.
-3. Teacher can filter or select one or multiple students.
-4. Teacher writes a message or selects a predefined email template (e.g., assignment reminder, class update).
-5. The system automatically fills in recipient details and course context.
-
-#### Responsibilities
-
-##### Communication management responsibilities
-- Provide access to the “Course Communication” section.
-- Display enrolled students and allow filtering or selection.
-- Support single and group message targeting.
-
-##### Automation responsibilities
-- Enable writing messages or selecting templates.
-- Allow file and image attachments in the message.
-- Optionally allow to automatically add the teacher signature at the end of the message.
-- Auto-fill course and recipient details according to the information from the lecture page/ details panel.
-- Validate message content and recipient list.
-
-##### Notification responsibilities
-- Send emails through the system mail service.
-- Confirm delivery status to the teacher.
-- Log communication events for auditing.
 
 ### Feature: Enrollment Lock and Notifications
 
