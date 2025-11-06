@@ -4,32 +4,22 @@ workspace "Enrollment system" "System for enrolling" {
         # software systems
         enrollmentSystem = softwareSystem "Enrolment System" "The main component for the..." {
 
-
-            # Enrollment system front-end containers
-            EnrollmentApp = container "Enrollment Application" "The logic behind the system" {
-                group "Presentation Layer"  {
-                }
-                group "Business Layer"  {
-                    analyzer = component "Device" "Business logic for devices"
-                    adminPatientModel = component "Patient" "Business logic for patients"
-                }
-                group "Persistence Layer"  {
-
-                }
-            }
-
             #Enrollment system UI
             EnrollmentUI = container "Enrollment page" "UI for the enrollment page"
 
-
             # Enrollment system providers
-            StudentInfoProvider = container "Student Info provider" "Provides access to student info"
-            CourseProvider = container "Course Info provider" "Provides access to courses"
+            StudentInfoProvider = container "Student Info provider" "Provides access to student info" {
+                component StudentValidator "Checks student profile field validity"
+                component StudentDataProcessor "Compiles and anonymizes profile data"
+                component Sign-on handler "Interacts with SSO"
+            }
+            CourseInfoProvider = container "Course Info provider" "Provides access to courses"
             EmailProvider = container "Email Provider" "Provides access to email"
 
             # Enrollment system repositories
             StudentInfoRepository = container "Student info repository" "Persists user info in the database"
             CourseRepository = container "Course repository" "Persists course data in the database"
+
             AuditLogger = container "Audit logger" "Persists audit logs the database"
 
             # Enrollment system database
@@ -58,17 +48,25 @@ workspace "Enrollment system" "System for enrolling" {
         CourseRepository -> CourseDB ""
         AuditLogger -> AuditLogDB ""
 
+        StudentInfoProvider -> StudentInfoRepository ""
+        CourseInfoProvider -> CourseRepository ""
+
 
         # The rest of the relationships
         EnrollmentUI -> StudentInfoProvider "Navigate to Student info page"
-        EnrollmentUI -> CourseProvider "Navigate to Course page"
+        EnrollmentUI -> CourseInfoProvider "Navigate to Course page"
         EnrollmentUI -> EmailProvider "Navigate to Email page"
 
-        StudentInfoProvider -> emailSystem "Notify"
-        CourseProvider ->  emailSystem "Notify"
-        EmailProvider -> emailSystem "Notify"
+        StudentInfoProvider -> EmailProvider "Notify"
+        CourseInfoProvider ->  EmailProvider "Notify"
+        EmailProvider -> emailSystem "Reads/sends emails"
 
         EmailProvider -> sso "Authenticates for email"
+        CourseInfoProvider -> sso "Authenticates for course access"
+        StudentInfoProvider -> sso "Autheticates for profile access"
+
+        StudentInfoProvider -> AuditLogger "Logs student profile events"
+        CourseInfoProvider -> AuditLogger  "Logs course info events"
     }
 
     views {
@@ -83,7 +81,7 @@ workspace "Enrollment system" "System for enrolling" {
             autoLayout
         }
 
-        component enrollmentApp "componentDiagram" {
+        component StudentInfoProvider {
             include *
             autoLayout
         }
