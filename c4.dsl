@@ -4,29 +4,22 @@ workspace "Enrollment system" "System for enrolling" {
         # software systems
         enrollmentSystem = softwareSystem "Enrolment System" "The main component for the..." {
 
-            #Enrollment system UI
-            EnrollmentUI = container "Enrollment page" "UI for the enrollment page"
+            # User Interfaces
+            enrollmentPage = container "Enrollment Page" "Provides web browser funcitonality for Student's self-enrollment." "HTML+JavaScript" "Web Front-End"
+            courseManagementPage = container "Course Management Page" "Provides web browser funcitonality managing courses" "HTML+JavaScript" "Web Front-End"
 
-            # Enrollment system providers
-            StudentInfoProvider = container "Student Info provider" "Provides access to student info" {
-                component StudentValidator "Checks student profile field validity"
-                component StudentDataProcessor "Compiles and anonymizes profile data"
-                component Sign-on handler "Interacts with SSO"
+            # Services
+            studentService = container "Self-enrollment Service" "Provides logic for Student management" {
+                studentServiceAPI = component "Student enrollment API" "" ""
             }
-            CourseInfoProvider = container "Course Info provider" "Provides access to courses"
-            EmailProvider = container "Email Provider" "Provides access to email"
+            courseService = container "Course Service" "Provides logic for Course management" {
+                courseServiceAPI = component "Course enrollment API" "" ""
+            }
 
-            # Enrollment system repositories
-            StudentInfoRepository = container "Student info repository" "Persists user info in the database"
-            CourseRepository = container "Course repository" "Persists course data in the database"
-
-            AuditLogger = container "Audit logger" "Persists audit logs the database"
-
-            # Enrollment system database
-            StudentInfoDB = container "Student info database" "Store student info data in the database" "" "Database"
-            CourseDB = container "Course database" "Store course data in the database" "" "Database"
-            auditLogDB = container "Audit Log Database" "Stores audit log records in the database." "" "Database"
-
+            # Databases
+            studentDB = container "Student info database" "Stores student info data" "" "Database"
+            courseDB = container "Course database" "Stores course data" "" "Database"
+            auditLogDB = container "Audit Log Database" "Stores audit log records" "" "Database"
         }
 
         # Other systems
@@ -39,34 +32,25 @@ workspace "Enrollment system" "System for enrolling" {
         sdo = person "Student department officer" "Manages and informs the students about changes and helps them with their problems."
 
         # relationships between actors and Enrollment system
-        student -> EnrollmentUI "Enrolls into the course using the system"
-        teacher -> EnrollmentUI "Manages the courses"
-        sdo -> EnrollmentUI "Manages student affairs"
+        student -> enrollmentPage "Enrolls into the course using the system"
+        teacher -> courseManagementPage "Manages courses and enrollments"
+        sdo -> courseManagementPage "Manages enrollments"
 
-        # repository-DB relationships
-        StudentInfoRepository -> StudentInfoDB ""
-        CourseRepository -> CourseDB ""
-        AuditLogger -> AuditLogDB ""
-
-        StudentInfoProvider -> StudentInfoRepository ""
-        CourseInfoProvider -> CourseRepository ""
-
+        # Database interactions
+        studentService -> studentDB "Reads and stores Student data"
+        courseService -> courseDB "Reads and stores Course data"
+        studentService -> auditLogDB "Stores audit logs for Student changes"
+        courseService -> auditLogDB "Stores autit logs for Course changes"
 
         # The rest of the relationships
-        EnrollmentUI -> StudentInfoProvider "Navigate to Student info page"
-        EnrollmentUI -> CourseInfoProvider "Navigate to Course page"
-        EnrollmentUI -> EmailProvider "Navigate to Email page"
+        enrollmentPage -> studentService "Makes API calls to make Student's course self-management"
+        courseManagementPage -> courseService "Makes API calls to edit course data, and manage enrollments on behalf of Students"
 
-        StudentInfoProvider -> EmailProvider "Notify"
-        CourseInfoProvider ->  EmailProvider "Notify"
-        EmailProvider -> emailSystem "Reads/sends emails"
+        studentService -> emailSystem "Make notification of events"
+        courseService ->  emailSystem "Make notification of events"
 
-        EmailProvider -> sso "Authenticates for email"
-        CourseInfoProvider -> sso "Authenticates for course access"
-        StudentInfoProvider -> sso "Autheticates for profile access"
-
-        StudentInfoProvider -> AuditLogger "Logs student profile events"
-        CourseInfoProvider -> AuditLogger  "Logs course info events"
+        courseService -> sso "Uses for authentication"
+        studentService -> sso "Uses for authentication"
     }
 
     views {
@@ -81,11 +65,15 @@ workspace "Enrollment system" "System for enrolling" {
             autoLayout
         }
 
-        component StudentInfoProvider {
+        component studentService {
             include *
             autoLayout
         }
 
+        component courseService {
+            include *
+            autoLayout
+        }
 
         styles {
             element "Existing System" {
@@ -98,6 +86,9 @@ workspace "Enrollment system" "System for enrolling" {
             }
             element "Database"  {
                 shape Cylinder
+            }
+            element "Web Front-End"  {
+                shape WebBrowser
             }
         }
 
