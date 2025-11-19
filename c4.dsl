@@ -22,14 +22,12 @@ workspace "Enrollment system" "System for enrolling" {
                 courseRepository = component "Course repository"
             }
             enrollmentService = container "Enrollment Service" {
-                employeeAPI = component "Employee API"
-                studentAPI = component "Student API"
-
+                enrollmentAPI = component "Enrollment API"
             }
 
             # Databases
             studentDB = container "Student Database" "Stores student data" "" "Database"
-            courseDB = container "Course Database" "Stores course data" "" "Database"
+            courseDB = container "Course Database" "Stores course and enrollment data" "" "Database"
             auditLogDB = container "Audit Log Database" "Stores audit log records" "" "Database"
         }
 
@@ -61,8 +59,8 @@ workspace "Enrollment system" "System for enrolling" {
         facultyUI -> courseService "Makes API calls to modify courses"
 
         # Enrollment service interactions
-        enrollmentService -> studentService "Makes API calls to read and modify Student info"
-        enrollmentService -> courseService "Makes API calls to read and modify Course info"
+        enrollmentService -> courseDB "Makes API calls to read and modify Enrollment info"
+
 
         # Notification interactions
         studentService -> emailSystem "Make notification of events"
@@ -80,13 +78,11 @@ workspace "Enrollment system" "System for enrolling" {
         studentRepository -> studentDB
         
         facultyUI -> courseServiceAPI ""
+        facultyUI -> StudentService ""
         courseServiceAPI -> courseReader ""
         courseReader -> courseModel "Uses domain logic of"
         courseModel -> courseRepository  "Reads writes course info"
         courseRepository -> courseDB
-
-        studentUI -> studentAPI ""
-        facultyUI -> employeeAPI ""
     }
 
     views {
