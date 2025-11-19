@@ -11,9 +11,14 @@ workspace "Enrollment system" "System for enrolling" {
             # Services
             studentService = container "Self-enrollment Service" "Provides logic for Student management" {
                 studentServiceAPI = component "Student enrollment API" "" ""
+                studentRepository = component "Student repository"
             }
             courseService = container "Course Service" "Provides logic for Course management" {
                 courseServiceAPI = component "Course enrollment API" "" ""
+                courseRepository = component "Course repository"
+            }
+            enrollmentService = container "Enrollment Service" {
+                enrollmentAPI = container "Enrollment API"
             }
 
             # Databases
@@ -42,13 +47,21 @@ workspace "Enrollment system" "System for enrolling" {
         studentService -> auditLogDB "Stores audit logs for Student changes"
         courseService -> auditLogDB "Stores autit logs for Course changes"
 
-        # The rest of the relationships
-        enrollmentPage -> studentService "Makes API calls to make Student's course self-management"
-        courseManagementPage -> courseService "Makes API calls to edit course data, and manage enrollments on behalf of Students"
+        # Front-end page interactions
+        enrollmentPage -> enrollmentService "Makes API calls to make Student's course self-management"
+        enrollmmentPage -> courseService "Makes API calls to view lists of courses"
+        courseManagementPage -> enrollmentService "Makes API calls to edit course data, and manage enrollments on behalf of Students"
+        courseManagementPage -> courseService "Makes API calls to modify courses"
 
+        # Enrollment service interactions
+        enrollmentService -> studentService "Calls to read and modify Student info"
+        enrollmentService -> courseService "Calls to read and modify Course info"
+
+        # Notification interactions
         studentService -> emailSystem "Make notification of events"
         courseService ->  emailSystem "Make notification of events"
 
+        # SSO interactions
         courseService -> sso "Uses for authentication"
         studentService -> sso "Uses for authentication"
     }
