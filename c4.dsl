@@ -15,6 +15,8 @@ workspace "Enrollment system" "System for enrolling" {
             }
             courseService = container "Course Service" "Provides logic for Course management" {
                 courseServiceAPI = component "Course enrollment API" "" ""
+                courseReader = component "Course Reader"
+                courseModel = component "Course Model"
                 courseRepository = component "Course repository"
             }
             enrollmentService = container "Enrollment Service" {
@@ -65,6 +67,12 @@ workspace "Enrollment system" "System for enrolling" {
         # SSO interactions
         courseService -> sso "Uses for authentication"
         studentService -> sso "Uses for authentication"
+        
+        facultyUI -> courseServiceAPI ""
+        courseServiceAPI -> courseReader ""
+        courseReader -> courseModel "Uses domain logic of"
+        courseModel -> courseRepository  "Reads writes course info"
+        courseRepository -> courseDB
     }
 
     views {
