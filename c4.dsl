@@ -10,24 +10,25 @@ workspace "Enrollment system" "System for enrolling" {
 
             # Services
             studentService = container "Student Service" "Provides logic for Student management" {
-                studentServiceAPI = component "Student enrollment API" "" ""
-                studentReader = component "Student Reader"
-                studentModel = component "Student Model"
-                studentRepository = component "Student repository"
+                studentServiceAPI = component "Student enrollment API" "API access to read and edit student info"
+                studentReader = component "Student Reader" "Domain logic for reading student info"
+                studentEditor = component "Student Editor" "Domain logic for editing student info"
+                studentModel = component "Student Model" "Domain logic of a student"
+                studentRepository = component "Student repository" "Persists student info in DB"
             }
             courseService = container "Course Service" "Provides logic for Course management" {
-                courseServiceAPI = component "Course enrollment API" "" ""
-                courseReader = component "Course Reader"
-                courseModel = component "Course Model"
-                courseRepository = component "Course repository"
+                courseServiceAPI = component "Course enrollment API" "" "API access to read and manage courses"
+                courseReader = component "Course Reader" "Domain logic for reading courses"
+                courseManager = component "Course Manager" "Domain logic for managing courses"
+                courseModel = component "Course Model" "Domain logic of a course"
+                courseRepository = component "Course repository" "Persists course info in DB"
             }
             enrollmentService = container "Enrollment Service" {
-                enrollmentAPI = component "Student Enrollment API"
-                studentEnrollmentReader = component "Student Enrollment Reader" "Provides functionality to read student enrollment data."
-                studentEnrollmentModel = component "Student Enrollment Model" "Domain logic for student enrollment changes."
-                studentEnrollmentRecorder = component "Student Enrollment Recorder" "Logic of recording changes in enrolling"
-                studentEnrollmentRepository = component "Student Enrollment Repository" 
-            
+                enrollmentAPI = component "Enrollment API"
+                studentEnrollmentReader = component "Enrollment Reader" "Provides functionality to read student enrollment data."
+                studentEnrollmentModel = component "Enrollment Model" "Domain logic for student enrollment changes."
+                studentEnrollmentRecorder = component "Enrollment Recorder" "Logic of recording changes in enrolling"
+                studentEnrollmentRepository = component "Enrollment Repository" "Perists enrollment info in DB"
             }
 
             # Databases
@@ -57,6 +58,8 @@ workspace "Enrollment system" "System for enrolling" {
         courseService -> courseDB "Reads and stores Course data"
         studentService -> auditLogDB "Stores audit logs of Student changes"
         courseService -> auditLogDB "Stores autit logs of Course changes"
+        enrollmentService -> auditLogDB "Stores audit logs of Enrollments"
+
 
         # Front-end page interactions
         studentUI -> enrollmentService "Makes API calls to make Student's course self-management"
@@ -66,7 +69,8 @@ workspace "Enrollment system" "System for enrolling" {
         facultyUI -> courseService "Makes API calls to modify courses"
 
         # Enrollment service interactions
-        studentUI -> enrollmentAPI "Makes API calls to edit course data, and manage enrollments on behalf of Students"
+        studentUI -> enrollmentAPI  "Makes API calls to manage self-enrollments"
+        facultyUI -> enrollmentAPI "Makes API calls to manage enrollments on behalf of Students"
         enrollmentService -> courseDB "Makes API calls to read and modify Enrollment info"
         enrollmentAPI -> studentEnrollmentReader "calls to read student enrollment data"
         enrollmentAPI -> studentEnrollmentRecorder "calls to write changes in students enrollment"
@@ -85,19 +89,46 @@ workspace "Enrollment system" "System for enrolling" {
         studentService -> sso "Uses for authentication"
         
         # Relations
-        studentUI -> studentServiceAPI ""
-        studentServiceAPI -> studentReader ""
+        studentUI -> studentServiceAPI "Makes API calls to view student info"
+        studentServiceAPI -> studentReader "Calls to read student info"
+        studentServiceAPI -> studentEditor "Calls to edit student info"
         studentReader -> studentModel "Uses domain logic of"
-        studentModel -> studentRepository  "Reads writes student info"
-        studentRepository -> studentDB
+        studentEditor -> studentModel "Uses domain logic of"
+        studentModel -> studentRepository  "Reads and writes student info"
+        studentRepository -> studentDB "Reads student data from"
         
-        facultyUI -> courseServiceAPI ""
-        facultyUI -> StudentService ""
-        courseServiceAPI -> courseReader ""
+        facultyUI -> courseServiceAPI "Makes API calls to read and manage courses"
+        facultyUI -> StudentService "Makes API calls to read student info"
+        courseServiceAPI -> courseReader "Calls to read course info"
+        courseServiceAPI -> courseManager "Calls to manage course"
         courseReader -> courseModel "Uses domain logic of"
-        courseModel -> courseRepository  "Reads writes course info"
-        courseRepository -> courseDB
+        courseManager -> courseModel "Uses domain logic of"
+        courseModel -> courseRepository  "Reads and writes course info"
+        courseRepository -> courseDB "Persists course data in DB"
+        
+        deploymentEnvironment "Live - Enrollments" {
+            deploymentNode "Student's web browser" "" "" {
+                containerInstance studentUI
+            }
+            deploymentNode "Faculty employee's web browser" "" "" {
+                containerInstance "facultyUI"
+            }
+
+
+            deploymentNode "Enrollments Server"Ubuntu 18.04 LTS"   {
+                deploymentNode "Application server" "" "Oracle 19.1.0" {
+                    containerInstance courseService
+                    containerInstance studentService
+                    containerInstance enrollmentService
+                }
+                deploymentNode "Relational DB server" "" "Oracle 19.1.0" {
+                    containerInstance courseDB
+                    containerInstance studentDB
+                }
+            }
+        }
     }
+
 
     views {
 
@@ -141,6 +172,11 @@ workspace "Enrollment system" "System for enrolling" {
             element "Web Front-End"  {
                 shape WebBrowser
             }
+        }
+        
+        deployment enrollmentSystem "Live - Enrollments" {
+            include *
+            autoLayout
         }
 
         theme default   
