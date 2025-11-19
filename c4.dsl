@@ -22,7 +22,12 @@ workspace "Enrollment system" "System for enrolling" {
                 courseRepository = component "Course repository"
             }
             enrollmentService = container "Enrollment Service" {
-                enrollmentAPI = component "Enrollment API"
+                enrollmentAPI = component "Student Enrollment API"
+                studentEnrollmentReader = component "Student Enrollment Reader" "Provides functionality to read student enrollment data."
+                studentEnrollmentModel = component "Student Enrollment Model" "Domain logic for student enrollment changes."
+                studentEnrollmentRecorder = component "Student Enrollment Recorder" "Logic of recording changes in enrolling"
+                studentEnrollmentRepository = component "Student Enrollment Repository" 
+            
             }
 
             # Databases
@@ -30,6 +35,8 @@ workspace "Enrollment system" "System for enrolling" {
             courseDB = container "Course Database" "Stores course and enrollment data" "" "Database"
             auditLogDB = container "Audit Log Database" "Stores audit log records" "" "Database"
         }
+        
+        
 
         # Other systems
         emailSystem = softwareSystem "Email System" "" "Existing System"
@@ -59,7 +66,14 @@ workspace "Enrollment system" "System for enrolling" {
         facultyUI -> courseService "Makes API calls to modify courses"
 
         # Enrollment service interactions
+        studentUI -> enrollmentAPI "Makes API calls to edit course data, and manage enrollments on behalf of Students"
         enrollmentService -> courseDB "Makes API calls to read and modify Enrollment info"
+        enrollmentAPI -> studentEnrollmentReader "calls to read student enrollment data"
+        enrollmentAPI -> studentEnrollmentRecorder "calls to write changes in students enrollment"
+        studentEnrollmentRepository -> courseDB "Reads enrollment data"
+        studentEnrollmentReader -> studentEnrollmentModel "Uses domain logic of"
+        studentEnrollmentRecorder -> studentEnrollmentModel "Uses domain logic of"
+        studentEnrollmentModel -> studentEnrollmentRepository "reads / writes enrollments"
 
 
         # Notification interactions
