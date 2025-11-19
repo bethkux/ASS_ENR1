@@ -22,7 +22,9 @@ workspace "Enrollment system" "System for enrolling" {
                 courseRepository = component "Course repository"
             }
             enrollmentService = container "Enrollment Service" {
-                enrollmentAPI = component "Enrollment API"
+                employeeAPI = component "Employee API"
+                studentAPI = component "Student API"
+
             }
 
             # Databases
@@ -82,6 +84,9 @@ workspace "Enrollment system" "System for enrolling" {
         courseReader -> courseModel "Uses domain logic of"
         courseModel -> courseRepository  "Reads writes course info"
         courseRepository -> courseDB
+
+        studentUI -> studentAPI ""
+        facultyUI -> employeeAPI ""
     }
 
     views {
