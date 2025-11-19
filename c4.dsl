@@ -70,6 +70,7 @@ workspace "Enrollment system" "System for enrolling" {
         courseService -> sso "Uses for authentication"
         studentService -> sso "Uses for authentication"
         
+        # Relations
         studentUI -> studentServiceAPI ""
         studentServiceAPI -> studentReader ""
         studentReader -> studentModel "Uses domain logic of"
@@ -90,7 +91,12 @@ workspace "Enrollment system" "System for enrolling" {
             autoLayout
         }
 
-        container enrollmentSystem "enrolmentContainerDiagram" {
+        container enrollmentSystem "enrollmentContainerDiagram" {
+            include *
+            autoLayout
+        }
+
+        component enrollmentService {
             include *
             autoLayout
         }
