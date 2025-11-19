@@ -11,6 +11,8 @@ workspace "Enrollment system" "System for enrolling" {
             # Services
             studentService = container "Student Service" "Provides logic for Student management" {
                 studentServiceAPI = component "Student enrollment API" "" ""
+                studentReader = component "Student Reader"
+                studentModel = component "Student Model"
                 studentRepository = component "Student repository"
             }
             courseService = container "Course Service" "Provides logic for Course management" {
@@ -24,8 +26,8 @@ workspace "Enrollment system" "System for enrolling" {
             }
 
             # Databases
-            studentDB = container "Student info database" "Stores student info data" "" "Database"
-            courseDB = container "Course database" "Stores course data" "" "Database"
+            studentDB = container "Student Database" "Stores student data" "" "Database"
+            courseDB = container "Course Database" "Stores course data" "" "Database"
             auditLogDB = container "Audit Log Database" "Stores audit log records" "" "Database"
         }
 
@@ -42,7 +44,7 @@ workspace "Enrollment system" "System for enrolling" {
         student -> studentUI "Enrolls into the course using the system"
         teacher -> facultyUI  "Manages courses and enrollments"
         sdo -> facultyUI  "Manages enrollments"
-
+        
         # Database interactions
         studentService -> studentDB "Reads and stores Student data"
         courseService -> courseDB "Reads and stores Course data"
@@ -67,6 +69,12 @@ workspace "Enrollment system" "System for enrolling" {
         # SSO interactions
         courseService -> sso "Uses for authentication"
         studentService -> sso "Uses for authentication"
+        
+        studentUI -> studentServiceAPI ""
+        studentServiceAPI -> studentReader ""
+        studentReader -> studentModel "Uses domain logic of"
+        studentModel -> studentRepository  "Reads writes course info"
+        studentRepository -> studentDB
         
         facultyUI -> courseServiceAPI ""
         courseServiceAPI -> courseReader ""
@@ -114,7 +122,6 @@ workspace "Enrollment system" "System for enrolling" {
             }
         }
 
-        theme default
-    
+        theme default   
     }
 }
