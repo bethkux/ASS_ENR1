@@ -102,35 +102,35 @@ As a teacher, I want a way to create and manage my lectures, so that can I plan 
 - Check for time conflicts and invalid entries.
 - Check for physical capacities of lecture rooms
 
-### Feature: Enrollment Lock and Notifications
+### Feature: Faculty initiated enrollment management
 
-As a student department officer (SDO), I need the system to automatically lock enrollments and send notifications before and after the processing period, to ensure deadlines are followed.
+As a teacher/SDO, I want a way make enrollments on behalf of students, so that they can be enrolled if student's can't make self-enrollments.
 
 #### Feature Breakdown:
 
-1. SDO sets the closing date for student enrollments.
-2. The system schedules automated notifications for all users (e.g., one day before, on closure, and after).
-3. When the date is reached, the system disables new enrollments or modifications.
-4. The system processes pending enrollments before fully locking.
-5. The system sends confirmation emails to affected students and teachers.
-6. SDO can manually reopen or extend enrollment if needed.
+1. Teacher opens the lecture management interface.
+2. Teacher chooses to create a new enrollment.
+2. Teacher selects the course and the student for enrollment.
+3  System verifies and registers the enrollment
+5. The system sends notifications of the enrollment.
 
-#### Responsibilities
+##### Lecture Management Responsibilities
+- Add enrollments
+- Remove enrollments
+- Update course capacity
 
-##### Enrollment responsibilities
-- Allow SDO to set or modify enrollment closing dates.
-- Schedule automatic system actions based on deadlines.
-- Validate configuration changes.
+##### Management Authorization Responsibilities
+- Validate teacher permissions.
+- Allow granting permissions to other teachers for managing enrollments
 
-##### Automated processing responsibilities
-- Send pre-closure, closure, and post-closure notifications.
-- Disable new enrollments or modifications after deadline.
-- Process pending enrollments before full lock.
+##### Enrollment validation responsibilities
+- Validate compliance with faculty rules
+- Verify course capacity.
+- Check for time conflicts.
 
-##### Notifications and override responsibilities
-- Send confirmation emails to affected students and teachers.
-- Allow SDO to manually reopen or extend enrollment.
-- Record all actions in the audit log.
+##### Notification responsibilities
+- Notify enrolled student
+- Notify of failures
 
 ### Feature: Export of Student Personal Data
 
@@ -166,3 +166,4 @@ As a student department officer, I want to export student information, so I can 
 - Show the progress of the export.
 - Notify the user of successful export completion.
 - Generate concise file name according to some predefined criteria (Year, Category, etc.).
+
