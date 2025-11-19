@@ -73,7 +73,7 @@ workspace "Enrollment system" "System for enrolling" {
         studentUI -> studentServiceAPI ""
         studentServiceAPI -> studentReader ""
         studentReader -> studentModel "Uses domain logic of"
-        studentModel -> studentRepository  "Reads writes course info"
+        studentModel -> studentRepository  "Reads writes student info"
         studentRepository -> studentDB
         
         facultyUI -> courseServiceAPI ""
