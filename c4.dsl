@@ -2,14 +2,14 @@ workspace "Enrollment system" "System for enrolling" {
 
     model {
         # software systems
-        enrollmentSystem = softwareSystem "Enrolment System" "The main component for the..." {
+        enrollmentSystem = softwareSystem "Enrollment System" "The main component for the..." {
 
             # User Interfaces
-            enrollmentPage = container "Enrollment Page" "Provides web browser funcitonality for Student's self-enrollment." "HTML+JavaScript" "Web Front-End"
-            courseManagementPage = container "Course Management Page" "Provides web browser funcitonality managing courses" "HTML+JavaScript" "Web Front-End"
+            studentUI = container "Student User Interface" "Provides web browser functionality for Student's to manage profile and enrollments" "HTML+JavaScript" "Web Front-End"
+            facultyUI = container "Employee User Interface" "Provides web browser functionality for faculty employees to manage courses" "HTML+JavaScript" "Web Front-End"
 
             # Services
-            studentService = container "Self-enrollment Service" "Provides logic for Student management" {
+            studentService = container "Student Service" "Provides logic for Student management" {
                 studentServiceAPI = component "Student enrollment API" "" ""
                 studentRepository = component "Student repository"
             }
@@ -18,7 +18,7 @@ workspace "Enrollment system" "System for enrolling" {
                 courseRepository = component "Course repository"
             }
             enrollmentService = container "Enrollment Service" {
-                enrollmentAPI = container "Enrollment API"
+                enrollmentAPI = component "Enrollment API"
             }
 
             # Databases
@@ -37,25 +37,26 @@ workspace "Enrollment system" "System for enrolling" {
         sdo = person "Student department officer" "Manages and informs the students about changes and helps them with their problems."
 
         # relationships between actors and Enrollment system
-        student -> enrollmentPage "Enrolls into the course using the system"
-        teacher -> courseManagementPage "Manages courses and enrollments"
-        sdo -> courseManagementPage "Manages enrollments"
+        student -> studentUI "Enrolls into the course using the system"
+        teacher -> facultyUI  "Manages courses and enrollments"
+        sdo -> facultyUI  "Manages enrollments"
 
         # Database interactions
         studentService -> studentDB "Reads and stores Student data"
         courseService -> courseDB "Reads and stores Course data"
-        studentService -> auditLogDB "Stores audit logs for Student changes"
-        courseService -> auditLogDB "Stores autit logs for Course changes"
+        studentService -> auditLogDB "Stores audit logs of Student changes"
+        courseService -> auditLogDB "Stores autit logs of Course changes"
 
         # Front-end page interactions
-        enrollmentPage -> enrollmentService "Makes API calls to make Student's course self-management"
-        enrollmmentPage -> courseService "Makes API calls to view lists of courses"
-        courseManagementPage -> enrollmentService "Makes API calls to edit course data, and manage enrollments on behalf of Students"
-        courseManagementPage -> courseService "Makes API calls to modify courses"
+        studentUI -> enrollmentService "Makes API calls to make Student's course self-management"
+        studentUI -> courseService "Makes API calls to view lists of courses"
+        studentUI -> studentService "Makes API calls to view and modify student profile"
+        facultyUI -> enrollmentService "Makes API calls to edit course data, and manage enrollments on behalf of Students"
+        facultyUI -> courseService "Makes API calls to modify courses"
 
         # Enrollment service interactions
-        enrollmentService -> studentService "Calls to read and modify Student info"
-        enrollmentService -> courseService "Calls to read and modify Course info"
+        enrollmentService -> studentService "Makes API calls to read and modify Student info"
+        enrollmentService -> courseService "Makes API calls to read and modify Course info"
 
         # Notification interactions
         studentService -> emailSystem "Make notification of events"
@@ -106,5 +107,6 @@ workspace "Enrollment system" "System for enrolling" {
         }
 
         theme default
+    
     }
 }
