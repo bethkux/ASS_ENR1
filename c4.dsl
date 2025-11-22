@@ -182,18 +182,56 @@ workspace "Enrollment system" "System for enrolling" {
             autoLayout
         }
         
-        //dynamic enrollmentSystem "studentEnrollment" "Student's enrollment self-management" {
-        //    student -> studentUI
-        //    studentUI -> enrollmentService      "Request enrollment into the course"
-        //    enrollmentService -> courseService 
-        //    courseService -> courseDB           "Fetch course data from database"
-        //    enrollmentService -> studentService
-        //    studentService -> studentDB         "Update course data to student profile"
-        //    courseService -> courseDB           "Write updated course data to database"
-        //    courseService -> emailSystem        "Request email system to notify"
-        //autoLayout
-        //}
-
+        dynamic enrollmentSystem "studentEnrollment" "Student's enrollment self-management" {
+            student -> studentUI "Navigate to student's UI"
+            studentUI -> courseService "Request all course info and tickets"
+            courseService -> courseDB "Fetch all course data from database"
+            studentUI -> courseService "Request enrollment into the course"
+            courseService -> courseDB "Write and fetch updated course data to database"
+            courseService -> auditLogService "Log update"
+            auditLogService -> auditDB "Saves the audit log to DB"
+            auditLogService -> emailSystem "Request email system to send notification"
+        autoLayout
+        }
+        
+        dynamic enrollmentSystem "studentProfileUpdate" "Student profile update" {
+            student -> studentUI "Navigate to student's profile page"
+            studentUI -> userProfileService "Request student's info"
+            userProfileService -> userProfileDB "Fetch student's profile info"
+            studentUI -> userProfileService "Student modifies profile"
+            userProfileService -> userProfileDB "Write and fetch profile info"
+            userProfileService -> auditLogService "Log update"
+            auditLogService -> auditDB "Saves the audit log to DB"
+            auditLogService -> emailSystem "Request email system to send notification"
+        autoLayout
+        }
+        
+        dynamic enrollmentSystem "teacherLectureManagement" "Teacher’s lectures management" {
+            teacher -> facultyUI "Navigate to teacher's UI"
+            facultyUI -> courseService "Request teacher's courses"
+            courseService -> courseDB "Fetch teacher's courses"
+            facultyUI -> courseService "Teacher changes course info"
+            courseService -> courseDB "Write and fetch course info"
+            courseService -> auditLogService "Log update"
+            auditLogService -> auditDB "Saves the audit log to DB"
+            auditLogService -> emailSystem "Request email system to send notification"
+        autoLayout
+        }
+        
+        dynamic enrollmentSystem "teacher" "Teacher’s sdalectures management" {
+            teacher -> facultyUI "Navigate to teacher's UI"
+            facultyUI -> courseService "Request teacher's courses"
+            courseService -> courseDB "Fetch teacher's courses"
+            facultyUI -> courseService "Teacher changes course info"
+            courseService -> courseDB "Write and fetch course info"
+            courseService -> auditLogService "Log update"
+            auditLogService -> auditDB "Saves the audit log to DB"
+            auditLogService -> emailSystem "Request email system to send notification"
+        autoLayout
+        }
+        
+        
+        
         styles {
             element "Existing System" {
                 background #999999
