@@ -65,6 +65,7 @@ workspace "Enrollment system" "System for enrolling" {
         studentUI -> courseService "Makes API calls to view courses"
         studentUI -> userProfileService "Makes API calls to view and modify student profile"
         facultyUI -> courseService "Makes API calls to modify courses"
+        facultyUI -> userProfileService "Makes API calls to view student profiles"
 
         # Audit log and notification interactions
         auditLogService -> emailSystem "Sends notifications"
@@ -218,15 +219,25 @@ workspace "Enrollment system" "System for enrolling" {
         autoLayout
         }
         
-        dynamic enrollmentSystem "teacher" "Teacher’s sdalectures management" {
-            teacher -> facultyUI "Navigate to teacher's UI"
-            facultyUI -> courseService "Request teacher's courses"
-            courseService -> courseDB "Fetch teacher's courses"
-            facultyUI -> courseService "Teacher changes course info"
-            courseService -> courseDB "Write and fetch course info"
+        dynamic enrollmentSystem "sdoLockNotification" "Enrollment Lock and Notifications" {
+            sdo -> facultyUI "Navigate to course page"
+            facultyUI -> courseService "Request settings"
+            courseService -> courseDB "Fetch settings"
+            facultyUI -> courseService "Update settings"
+            courseService -> courseDB "Write and fetch new settings"
             courseService -> auditLogService "Log update"
             auditLogService -> auditDB "Saves the audit log to DB"
             auditLogService -> emailSystem "Request email system to send notification"
+        autoLayout
+        }
+        
+        dynamic enrollmentSystem "exportStudentData" "Export of Student Personal Data" {
+            sdo -> facultyUI 
+            facultyUI -> userProfileService  "Request all user profiles"
+            userProfileService -> userProfileDB "Fetch all user profiles"
+            facultyUI -> userProfileService "Request to export selected user profiles"
+            userProfileService -> auditLogService "Log update"
+            auditLogService -> auditDB "Saves the audit log to DB"
         autoLayout
         }
         
