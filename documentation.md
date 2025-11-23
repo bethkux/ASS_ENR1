@@ -47,9 +47,15 @@ As a student, I want a way to manage my enrollments, so that I can formally atte
 
 ## 1.  Feature: Student's enrollment self-management
 
-### A. Course Collection Responsibilities
+### a). Course Collection Responsibilities
 * Student User Interface: Display available course options.
 * Course Service / Course Provider: Load courses from the database.
+
+* ### b). Enrollment Execution Responsibilities
+* Course Service / Course Manager: Update the student’s schedule, Update student enrollment records.
+* Course Service / Course Model: Update course ticket per enrollment change.
+* Course Service / Course repository: Execute enrollment transaction safely.
+* Course Database: Store course and enrollment data.
 
 ---
 
