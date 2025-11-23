@@ -38,8 +38,8 @@ workspace "Enrollment system" "System for enrolling" {
         }
 
         # Other systems
-        emailSystem = softwareSystem "Email System" "" "Existing System"
-        sso = softwareSystem "SSO" "Allow user log in" "Existing System"
+        emailSystem = softwareSystem "Email System" "Notifies users of the system of changes." "Existing System"
+        sso = softwareSystem "SSO" "Allows user to log in." "Existing System"
 
         # actors
         student = person "Student" "Uses the system to enroll into the courses they selected."
