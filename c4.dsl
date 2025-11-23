@@ -2,7 +2,7 @@ workspace "Enrollment system" "System for enrolling" {
 
     model {
         # software systems
-        enrollmentSystem = softwareSystem "Enrollment System" "The main component for the..." {
+        enrollmentSystem = softwareSystem "Enrollment System" "Manages student enrollments, profiles, and courses, while enabling faculty and staff to oversee enrollments and audit logs" {
 
             # User Interfaces
             studentUI = container "Student User Interface" "Provides web browser functionality for Student's to manage profile and enrollments" "HTML+JavaScript" "Web Front-End"
