@@ -51,7 +51,7 @@ As a student, I want a way to manage my enrollments, so that I can formally atte
 * Student User Interface: Display available course options.
 * Course Service / Course Provider: Load courses from the database.
 
-* ### b). Enrollment Execution Responsibilities
+### b). Enrollment Execution Responsibilities
 * Course Service / Course Manager: Update the student’s schedule, Update student enrollment records.
 * Course Service / Course Model: Update course ticket per enrollment change.
 * Course Service / Course repository: Execute enrollment transaction safely.
