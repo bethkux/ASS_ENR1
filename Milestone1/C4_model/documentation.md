@@ -57,5 +57,10 @@ As a student, I want a way to manage my enrollments, so that I can formally atte
 * Course Service / Course repository: Execute enrollment transaction safely.
 * Course Database: Store course and enrollment data.
 
+### c). Validation & Notification Responsibilities
+* Course Service / Course Manager: Validate compliance with faculty rules, Verify prerequisites and course capacity, Check for time conflicts.
+* Course Service / Course enrollment API: Validate course enrollment requests (initial checks).
+* Audit Log Service / Audit Notifier: Send result confirmation notifications (via Email System).
+
 ---
 
