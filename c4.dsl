@@ -2,7 +2,7 @@ workspace "Enrollment system" "System for enrolling" {
 
     model {
         # software systems
-        enrollmentSystem = softwareSystem "Enrollment System" "Manages student enrollments, profiles, and courses, while enabling faculty and staff to oversee enrollments and audit logs" {
+        enrollmentSystem = softwareSystem "Enrollment System" "Manages student enrollments, profiles, and courses, while enabling faculty and staff to oversee enrollments and audit logs." {
 
             # User Interfaces
             studentUI = container "Student User Interface" "Provides web browser functionality for Student's to manage profile and enrollments" "HTML+JavaScript" "Web Front-End"
@@ -42,8 +42,8 @@ workspace "Enrollment system" "System for enrolling" {
         sso = softwareSystem "SSO" "Allow user log in" "Existing System"
 
         # actors
-        student = person "Student" "Student is the one who uses the system to enroll into the courses they selected."
-        teacher = person "Teacher" "The one who manages the courses the students are enrolling to."
+        student = person "Student" "Uses the system to enroll into the courses they selected."
+        teacher = person "Teacher" "Manages the courses the students are enrolling to."
         sdo = person "Student department officer" "Manages and informs the students about changes and helps them with their problems."
 
         # relationships between actors and Enrollment system
