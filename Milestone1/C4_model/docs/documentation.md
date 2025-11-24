@@ -2,6 +2,8 @@
 
 System designed to streamline academic administrative tasks for Students, Teachers, and Student Department Officers (SDOs) in a university setting. It focuses on course enrollment, managing personal data, helps with organizing classes, and makes sure deadlines and data security rules are followed.
 
+![](embed:enrollmentContainerDiagram)
+
 ---
 
 Below are the features broken down by user role, including the user story, the detailed user-system interaction, and the derived responsibilities for implementation.

@@ -1,6 +1,8 @@
 workspace "Enrollment system" "System for enrolling" {
 
+    !docs docs
     model {
+
         # software systems
         enrollmentSystem = softwareSystem "Enrollment System" "Manages student enrollments, profiles, and courses, while enabling faculty and staff to oversee enrollments and audit logs." {
 
@@ -50,7 +52,7 @@ workspace "Enrollment system" "System for enrolling" {
         student -> studentUI "Enrolls into the course using the system"
         teacher -> facultyUI  "Manages courses and enrollments"
         sdo -> facultyUI  "Manages enrollments"
-        
+
         # Database interactions
         userProfileService -> userProfileDB "Stores user profile data"
         courseService -> courseDB "Stores course data"
@@ -74,7 +76,7 @@ workspace "Enrollment system" "System for enrolling" {
         courseService -> sso "Uses for authentication"
         userProfileService -> sso "Uses for authentication"
         auditLogService -> sso "Uses for authentication"
-        
+
         # User Info component interactions
         studentUI -> userProfileServiceAPI "Makes API calls to view user profiles"
         facultyUI -> userProfileServiceAPI "Makes API calls to view user profiles"
@@ -85,7 +87,7 @@ workspace "Enrollment system" "System for enrolling" {
         userProfileEditor -> userProfile "Uses domain logic of"
         userProfile -> userProfileRepository  "Reads and writes student info"
         userProfileRepository -> userProfileDB "Reads student data from"
-        
+
         # Course component interactions
         studentUI -> courseServiceAPI "Makes API calls to read and enroll courses"
         facultyUI -> courseServiceAPI "Makes API calls to read and manage courses"
@@ -109,15 +111,15 @@ workspace "Enrollment system" "System for enrolling" {
         auditNotifier -> emailSystem "Calls to send notification via email"
         auditLogProvider -> auditLogRepository "Reads audit logs"
         auditLogRepository -> auditDB "Persists logs in DB"
-        
-        deploymentEnvironment "Live - Enrollments" {
+
+        deploymentEnvironment "Production - Enrollments" {
             deploymentNode "Student's web browser"{
                 containerInstance studentUI
             }
             deploymentNode "Faculty employee's web browser" {
                 containerInstance facultyUI
             }
-            
+
             deploymentNode "Enrollment Server" "" "UwUntu 22.10 LTS" {
                 deploymentNode "Application Server" {
                     containerInstance userProfileService
@@ -131,22 +133,58 @@ workspace "Enrollment system" "System for enrolling" {
                 }
             }
         }
-        
+
+        deploymentEnvironment "Production (distributed) - Enrollments" {
+            deploymentNode "Student's web browser"{
+                containerInstance studentUI
+            }
+            deploymentNode "Faculty employee's web browser" {
+                containerInstance facultyUI
+            }
+
+            deploymentNode "User Profile Server" "" "UwUntu 22.10 LTS" {
+                deploymentNode "Application Server" {
+                    containerInstance userProfileService
+                }
+                deploymentNode "Relational DB Server" "" "Oracle 19.1.0"{
+                    containerInstance userProfileDB
+                }
+            }
+
+            deploymentNode "Course Server" "" "UwUntu 22.10 LTS" {
+                deploymentNode "Application Server" {
+                    containerInstance courseService
+                }
+                deploymentNode "Relational DB Server" "" "Oracle 19.1.0"{
+                    containerInstance courseDB
+                }
+            }
+
+            deploymentNode "Audit Log Server" "" "UwUntu 22.10 LTS" {
+                deploymentNode "Application Server" {
+                    containerInstance auditLogService
+                }
+                deploymentNode "Relational DB Server" "" "Oracle 19.1.0"{
+                    containerInstance auditDB
+                }
+            }
+        }
+
         deploymentEnvironment "Development - Enrollments" {
-    
+
             deploymentNode "Enrollment Server" "" "UwUntu 22.10 LTS" {
-                
+
                 deploymentNode "Developer's browser" "" "Chrome, Internet explorer" {
                     containerInstance studentUI
                     containerInstance facultyUI
                 }
-            
+
                 deploymentNode "Application Server" {
                     containerInstance userProfileService
                     containerInstance courseService
                     containerInstance auditLogService
                 }
-                
+
                 deploymentNode "Relational DB Server" "" "Oracle 19.1.0"{
                     containerInstance userProfileDB
                     containerInstance courseDB
@@ -168,21 +206,21 @@ workspace "Enrollment system" "System for enrolling" {
             autoLayout
         }
 
-        component userProfileService {
+        component userProfileService "userProfileServiceComponentDiagram" {
             include *
             autoLayout
         }
 
-        component courseService {
+        component courseService "courseServiceComponentDiagram" {
             include *
             autoLayout
         }
 
-        component auditLogService {
+        component auditLogService "auditLogServiceComponentDiagram" {
             include *
             autoLayout
         }
-        
+
         dynamic enrollmentSystem "studentEnrollment" "Student's enrollment self-management" {
             student -> studentUI "Navigate to student's UI"
             studentUI -> courseService "Request all course info and tickets"
@@ -194,7 +232,7 @@ workspace "Enrollment system" "System for enrolling" {
             auditLogService -> emailSystem "Request email system to send notification"
         autoLayout
         }
-        
+
         dynamic enrollmentSystem "studentProfileUpdate" "Student profile update" {
             student -> studentUI "Navigate to student's profile page"
             studentUI -> userProfileService "Request student's info"
@@ -206,7 +244,7 @@ workspace "Enrollment system" "System for enrolling" {
             auditLogService -> emailSystem "Request email system to send notification"
         autoLayout
         }
-        
+
         dynamic enrollmentSystem "teacherLectureManagement" "Teacher’s lectures management" {
             teacher -> facultyUI "Navigate to teacher's UI"
             facultyUI -> courseService "Request teacher's courses"
@@ -218,7 +256,7 @@ workspace "Enrollment system" "System for enrolling" {
             auditLogService -> emailSystem "Request email system to send notification"
         autoLayout
         }
-        
+
         dynamic enrollmentSystem "sdoLockNotification" "Enrollment Lock and Notifications" {
             sdo -> facultyUI "Navigate to course page"
             facultyUI -> courseService "Request settings"
@@ -230,9 +268,9 @@ workspace "Enrollment system" "System for enrolling" {
             auditLogService -> emailSystem "Request email system to send notification"
         autoLayout
         }
-        
+
         dynamic enrollmentSystem "exportStudentData" "Export of Student Personal Data" {
-            sdo -> facultyUI 
+            sdo -> facultyUI
             facultyUI -> userProfileService  "Request all user profiles"
             userProfileService -> userProfileDB "Fetch all user profiles"
             facultyUI -> userProfileService "Request to export selected user profiles"
@@ -240,9 +278,9 @@ workspace "Enrollment system" "System for enrolling" {
             auditLogService -> auditDB "Saves the audit log to DB"
         autoLayout
         }
-        
-        
-        
+
+
+
         styles {
             element "Existing System" {
                 background #999999
@@ -259,17 +297,22 @@ workspace "Enrollment system" "System for enrolling" {
                 shape WebBrowser
             }
         }
-        
-        deployment enrollmentSystem "Live - Enrollments" {
+
+        deployment enrollmentSystem "Production - Enrollments" {
             include *
             autoLayout
         }
-        
+
+        deployment enrollmentSystem "Production (distributed) - Enrollments" {
+            include *
+            autoLayout
+        }
+
         deployment enrollmentSystem "Development - Enrollments" {
             include *
             autoLayout
         }
 
-        theme default   
+        theme default
     }
 }
