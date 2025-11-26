@@ -7,8 +7,17 @@ workspace "Enrollment system" "System for enrolling" {
         enrollmentSystem = softwareSystem "Enrollment System" "Manages student enrollments, profiles, and courses, while enabling faculty and staff to oversee enrollments and audit logs." {
 
             # User Interfaces
-            studentUI = container "Student User Interface" "Provides web browser functionality for Student's to manage profile and enrollments" "HTML+JavaScript" "Web Front-End"
-            facultyUI = container "Employee User Interface" "Provides web browser functionality for faculty employees to manage courses" "HTML+JavaScript" "Web Front-End"
+            studentUI = container "Student User Interface" "Provides web browser functionality for Student's to manage profile and enrollments" "HTML+JavaScript" "Web Front-End" {
+                studentProfileUI = component "Student Profile UI" "Provides UI for viewing profiles and managing student's own profile"
+                studentCourseUI = component "Student Course UI" "Provides UI for listing courses and managing student's own enrollments to them"
+                studentAuth = component "Student Authenticator" "Prompts to sign-on"
+            }
+            facultyUI = container "Employee User Interface" "Provides web browser functionality for faculty employees to manage courses" "HTML+JavaScript" "Web Front-End" {
+                facultyProfileUI = component "Faculty Profile UI" "Provides UI for listing profiles across faculty"
+                facultyCourseUI = component "Faculty Course UI" "Provides UI for listing and managing courses"
+                auditDashboardUI = component "Audit Log Dashboard" "Provides UI for viewing audit logs"
+                facultyAuth = component "Faculty Employee Authenticator" "Prompts to sign-on"
+            }
 
             # Services
             userProfileService = container "User Profile Service" "Provides logic for user profile management" {
@@ -59,27 +68,28 @@ workspace "Enrollment system" "System for enrolling" {
         auditLogService -> auditDB "Stores audit logs"
 
         # Audit
-        facultyUI -> auditLogService "Makes API calls to read audit data"
-        userProfileService -> auditLogService "Sends audit logs"
-        courseService -> auditLogService "Sends audit logs"
+        auditDashboardUI -> auditLogAPI "Makes API calls to read audit data"
+        userProfileServiceAPI -> auditLogAPI "Sends audit logs"
+        courseServiceAPI -> auditLogAPI "Sends audit logs"
 
         # Front-end page interactions
-        studentUI -> courseService "Makes API calls to view courses"
-        studentUI -> userProfileService "Makes API calls to view and modify student profile"
-        facultyUI -> courseService "Makes API calls to modify courses"
-        facultyUI -> userProfileService "Makes API calls to view student profiles"
+        studentProfileUI -> userProfileServiceAPI "Makes API calls to view and modify student profile"
+        facultyCourseUI -> courseServiceAPI "Makes API calls to read and modify courses"
+        facultyProfileUI -> userProfileServiceAPI "Makes API calls to view student profiles"
 
         # Audit log and notification interactions
         auditLogService -> emailSystem "Sends notifications"
 
         # SSO interactions
+        studentAuth -> sso "Requests authentication tokens"
+        facultyAuth -> sso "Requests authentication tokens"
         courseService -> sso "Uses for authentication"
         userProfileService -> sso "Uses for authentication"
         auditLogService -> sso "Uses for authentication"
 
         # User Info component interactions
-        studentUI -> userProfileServiceAPI "Makes API calls to view user profiles"
-        facultyUI -> userProfileServiceAPI "Makes API calls to view user profiles"
+        studentProfileUI -> userProfileServiceAPI "Makes API calls to view user profiles"
+        facultyProfileUI -> userProfileServiceAPI "Makes API calls to view user profiles"
         userProfileServiceAPI -> userProfileProvider "Calls to read user profile"
         userProfileServiceAPI -> userProfileEditor "Calls to edit user profile"
         userProfileServiceAPI -> sso "Uses to authenticate provided tokens"
@@ -89,8 +99,8 @@ workspace "Enrollment system" "System for enrolling" {
         userProfileRepository -> userProfileDB "Reads student data from"
 
         # Course component interactions
-        studentUI -> courseServiceAPI "Makes API calls to read and enroll courses"
-        facultyUI -> courseServiceAPI "Makes API calls to read and manage courses"
+        studentCourseUI -> courseServiceAPI "Makes API calls to read and enroll courses"
+        facultyCourseUI -> courseServiceAPI "Makes API calls to read and manage courses"
         courseServiceAPI -> courseProvider "Calls to read course info"
         courseServiceAPI -> courseManager "Calls to manage course"
         courseServiceAPI -> sso "Uses to authenticate provided tokens"
@@ -102,9 +112,8 @@ workspace "Enrollment system" "System for enrolling" {
         # Audit component interactions
         courseServiceAPI -> auditLogAPI "Makes API calls to log actions"
         userProfileServiceAPI -> auditLogAPI "Makes API calls to log actions"
-        facultyUI -> auditLogAPI "Makes API calls to read logs"
-        auditLogAPI -> auditLogProvider "Makes API calls to read log records from"
-        auditLogAPI -> auditLogConsumer "Makes API calls  to send logs for ingestion"
+        auditLogAPI -> auditLogProvider "Calls to read log records from"
+        auditLogAPI -> auditLogConsumer "Calls to send incoming logs for ingestion"
         auditLogAPI -> sso "Uses to authenticate provided tokens"
         auditLogConsumer -> auditLogRepository "Stores audit logs"
         auditLogConsumer -> auditNotifier "Sends log data to create audit notification"
@@ -203,22 +212,56 @@ workspace "Enrollment system" "System for enrolling" {
 
         container enrollmentSystem "enrollmentContainerDiagram" {
             include *
+            exclude sso
+            exclude emailSystem
             autoLayout
         }
 
         component userProfileService "userProfileServiceComponentDiagram" {
             include *
+            exclude "studentUI -> sso"
+            exclude "facultyUI -> sso"
+            exclude "auditLogService -> sso"
+            exclude "facultyUI -> auditLogService"
             autoLayout
         }
 
         component courseService "courseServiceComponentDiagram" {
             include *
+            exclude "studentUI -> sso"
+            exclude "facultyUI -> sso"
+            exclude "auditLogService -> sso"
+            exclude "facultyUI -> auditLogService"
             autoLayout
         }
 
         component auditLogService "auditLogServiceComponentDiagram" {
             include *
+            exclude "studentUI -> sso"
+            exclude "facultyUI -> sso"
+            exclude "facultyUI -> userProfileService"
+            exclude "facultyUI -> courseService"
+            exclude "auditLogService -> sso"
+            exclude "userProfileService -> sso"
+            exclude "CourseService -> sso"
             autoLayout
+        }
+
+        component studentUI "studentUIComponentDiagram" {
+            include *
+            exclude "userProfileService -> sso"
+            exclude "courseService -> sso"
+            autoLayout
+        }
+
+        component facultyUI "facultyUIComponentDiagram" {
+            include *
+            autoLayout
+            exclude "userProfileService -> sso"
+            exclude "courseService -> sso"
+            exclude "userProfileService -> auditLogService"
+            exclude "courseService -> auditLogService"
+            exclude "auditLogService -> sso"
         }
 
         dynamic enrollmentSystem "studentEnrollment" "Student's enrollment self-management" {
@@ -230,7 +273,7 @@ workspace "Enrollment system" "System for enrolling" {
             courseService -> auditLogService "Log update"
             auditLogService -> auditDB "Saves the audit log to DB"
             auditLogService -> emailSystem "Request email system to send notification"
-        autoLayout
+            autoLayout
         }
 
         dynamic enrollmentSystem "studentProfileUpdate" "Student profile update" {
@@ -242,7 +285,7 @@ workspace "Enrollment system" "System for enrolling" {
             userProfileService -> auditLogService "Log update"
             auditLogService -> auditDB "Saves the audit log to DB"
             auditLogService -> emailSystem "Request email system to send notification"
-        autoLayout
+            autoLayout
         }
 
         dynamic enrollmentSystem "teacherLectureManagement" "Teacher’s lectures management" {
@@ -254,7 +297,7 @@ workspace "Enrollment system" "System for enrolling" {
             courseService -> auditLogService "Log update"
             auditLogService -> auditDB "Saves the audit log to DB"
             auditLogService -> emailSystem "Request email system to send notification"
-        autoLayout
+            autoLayout
         }
 
         dynamic enrollmentSystem "sdoLockNotification" "Enrollment Lock and Notifications" {
@@ -266,7 +309,7 @@ workspace "Enrollment system" "System for enrolling" {
             courseService -> auditLogService "Log update"
             auditLogService -> auditDB "Saves the audit log to DB"
             auditLogService -> emailSystem "Request email system to send notification"
-        autoLayout
+            autoLayout
         }
 
         dynamic enrollmentSystem "exportStudentData" "Export of Student Personal Data" {
@@ -276,7 +319,7 @@ workspace "Enrollment system" "System for enrolling" {
             facultyUI -> userProfileService "Request to export selected user profiles"
             userProfileService -> auditLogService "Log update"
             auditLogService -> auditDB "Saves the audit log to DB"
-        autoLayout
+            autoLayout
         }
 
 
