@@ -103,7 +103,6 @@ As a teacher, I want a way to create and manage my lectures, so that I can plan 
 - Check for time conflicts and invalid entries.
 - Check for physical capacities of lecture rooms.
 
----
 
 ### Feature: Faculty-initiated enrollment management
 
@@ -137,6 +136,37 @@ As a teacher/SDO, I want a way to make enrollments on behalf of students, so tha
 - Notify of failures.
 
 ---
+
+### Feature: Enrollment Lock and Notifications
+
+As a student department officer (SDO), I need the system to automatically lock enrollments and send notifications before and after the processing period, to ensure deadlines are followed.
+
+#### Feature Breakdown:
+
+1. SDO sets the closing date for student enrollments.
+2. The system schedules automated notifications for all users (e.g., one day before, on closure, and after).
+3. When the date is reached, the system disables new enrollments or modifications.
+4. The system processes pending enrollments before fully locking.
+5. The system sends confirmation emails to affected students and teachers.
+6. SDO can manually reopen or extend enrollment if needed.
+
+#### Responsibilities
+
+##### Enrollment responsibilities
+- Allow SDO to set closing dates
+- Allow amendment of enrollment closing dates.
+- Schedule automatic system actions based on deadlines.
+- Validate configuration changes.
+
+##### Automated processing responsibilities
+- Send pre-closure, closure, and post-closure notifications.
+- Disable new enrollments or modifications after deadline.
+- Process pending enrollments before full lock.
+
+##### Notifications and override responsibilities
+- Send confirmation emails to affected students and teachers.
+- Allow SDO to manually reopen or extend enrollment.
+- Record all actions in the audit log.
 
 ### Feature: Export of Student Personal Data
 
