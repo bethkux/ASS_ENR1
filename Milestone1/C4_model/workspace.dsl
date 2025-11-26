@@ -81,7 +81,12 @@ workspace "Enrollment system" "System for enrolling" {
         auditLogService -> emailSystem "Sends notifications"
 
         # SSO interactions
+        studentProfileUI -> studentAuth "Uses credential token"
+        studentCourseUI -> studentAuth "Uses credential token"
         studentAuth -> sso "Requests authentication tokens"
+        facultyCourseUI -> facultyAuth "Uses credential token"
+        facultyProfileUI -> facultyAuth "Uses credential token"
+        auditDashboardUI -> facultyAuth "Uses credential token"
         facultyAuth -> sso "Requests authentication tokens"
         courseService -> sso "Uses for authentication"
         userProfileService -> sso "Uses for authentication"
@@ -110,8 +115,8 @@ workspace "Enrollment system" "System for enrolling" {
         courseRepository -> courseDB "Persists course data in DB"
 
         # Audit component interactions
-        courseServiceAPI -> auditLogAPI "Makes API calls to log actions"
-        userProfileServiceAPI -> auditLogAPI "Makes API calls to log actions"
+        courseManager -> auditLogAPI "Makes API calls to log actions"
+        userProfileEditor -> auditLogAPI "Makes API calls to log actions"
         auditLogAPI -> auditLogProvider "Calls to read log records from"
         auditLogAPI -> auditLogConsumer "Calls to send incoming logs for ingestion"
         auditLogAPI -> sso "Uses to authenticate provided tokens"
