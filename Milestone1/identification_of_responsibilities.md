@@ -103,6 +103,7 @@ As a teacher, I want a way to create and manage my lectures, so that I can plan 
 - Check for time conflicts and invalid entries.
 - Check for physical capacities of lecture rooms.
 
+---
 
 ### Feature: Faculty-initiated enrollment management
 
@@ -167,6 +168,8 @@ As a student department officer (SDO), I need the system to automatically lock e
 - Send confirmation emails to affected students and teachers.
 - Allow SDO to manually reopen or extend enrollment.
 - Record all actions in the audit log.
+
+---
 
 ### Feature: Export of Student Personal Data
 
