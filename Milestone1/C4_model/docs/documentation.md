@@ -32,6 +32,8 @@ That is, if we have enough physical resources, and would like services to functi
 #### `Student Authenticator`
 * Provides interface with single sign-on
 
+---
+
 ### Employee User Interface (L2 Container)
 * Display/Facilitate creation/Allow editing of existing lectures
 
@@ -121,7 +123,7 @@ Note: For `Faculty Authenticator` and `Student Authenticator` the same shared li
 
 ---
 
-### 5. Databases (L2 Containers)
+### Databases (L2 Containers)
 
 #### `User Profile Database`
 * Contains user profile data
