@@ -69,7 +69,7 @@ Note: For `Faculty Authenticator` and `Student Authenticator` the same shared li
 #### `User Profile Repository`
 * Save validated changes to the database (Feature 2).
 
-#### *User Profile*
+#### `User Profile`
 * Prescribe user profile data
 * Compile and anonymize selected data fields
 * Generate the export file in the chosen format
