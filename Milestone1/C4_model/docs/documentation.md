@@ -6,7 +6,7 @@ System designed to streamline academic administrative tasks for Students, Teache
 
 ## Brief overview
 
-We have divided three subdomains, corresponding to the following service containers
+We have divided three subdomains, corresponding to the following service containers:
 
 1. `User Profile Service` focusing on domain logic relevant to user profiles.
 2. `Course Service` for domain logic around courses + enrollments, and managing them as a faculty employee.
@@ -69,7 +69,7 @@ Note: For `Faculty Authenticator` and `Student Authenticator` the same shared li
 * Check for restricted or sensitive data modifications
 
 #### `User Profile Repository`
-* Save validated changes to the database (Feature 2).
+* Save validated changes to the database (Feature 2)
 
 #### `User Profile`
 * Prescribe user profile data
@@ -92,7 +92,7 @@ Note: For `Faculty Authenticator` and `Student Authenticator` the same shared li
 * Validate compliance with faculty rules
 * Verify prerequisites and course capacity
 * Check for time conflicts
-* Update the teacher's list of taught courses,
+* Update the teacher's list of taught courses
 * Transmit changes to courses to the database
 * Add/Remove enrollments, Update course capacity
 
