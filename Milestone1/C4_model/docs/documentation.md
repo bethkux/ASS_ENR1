@@ -76,7 +76,7 @@ Note: For `Faculty Authenticator` and `Student Authenticator` the same shared li
 
 ---
 
-### 3. Course Service (L2 Container)
+### Course Service (L2 Container)
 
 #### `Course enrollment API`
 * Validate course enrollment requests (initial checks)
@@ -103,7 +103,7 @@ Note: For `Faculty Authenticator` and `Student Authenticator` the same shared li
 
 ---
 
-### 4. Audit Log Service (L2 Container)
+### Audit Log Service (L2 Container)
 
 #### `Audit Log Consumer`
 * Log all profile changes for compliance
