@@ -1,0 +1,7 @@
+candidate filtering do schedule service (Kuba)
+L3 for containers - statistic app (Juraj), viewing app, notification service, schedule viewer service, course service (Askold)
+dependency review (Kuba)
+external room info (Kryštof)
+notification triggered from scheduling service (Kuba)
+1 dynamic diagram (Kryštof)
+2 deployment diagram (Jirka)

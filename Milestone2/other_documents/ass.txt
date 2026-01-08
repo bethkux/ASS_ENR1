@@ -1,0 +1,81 @@
+feature:
+	course management... z pohledu učitelů -> vytvořit, mazat, měnit 
+		maximální počet lidí na předmět, maximální počty pro jednotlivé paralelky, potřebné vybavení, učitelé, počet hodin/cvičení, prerekvizity, počet kreditů atd. atd.
+	scheduling... z pohledu komise a učitelů -> nejdřív to dělá komice, pak své menší předměty učitelé, komise dostane předměty, místnosti, preference učitelů
+		v rozvrhu vytvořit, mazat, měnit paralelky (přednášky a cvíření předmětů), s kontrolu validity
+		paralelka... maximální počet, učetelé, místnost, čas, typ
+	preference... z pohledu učitele -> učitel vybere čas (lokalita) kdy nemůže učit
+	viewing schedules... z pohledu učitele, studenta, místnosti, předmětu, obor, kruhu, 
+	statistics... zaplněnost místností, vytížení učitelů, děláme snapshot
+
+
+CORE:
+Registering new course
+As a teacher i want to register a new course with its information so that it can be scheduled and attended by students
+
+Editing a course
+As a teacher I want to be able to edit or delete my existing courses so I can correct errors.
+
+CORE:
+Scheduling a course
+As a comitee member I need to be able to schedule an existing course to a specific time and room so i can gradually make the school schedule.
+
+Viewing unscheduled courses
+As a comitee member I want to be able to see the unscheduled courses so i know which courses are missing in the schedule and how many there are.
+
+Viewing the whole schedule
+As a comitee member I need to see a table with all scheduled courses (occupancy for each time and room) so I can see which slots are free.
+
+CORE:
+Colission detection
+As a comitee member I want the system to notify me when more courses are scheduled in the same room and place so I can avoid colissions in schedule
+
+Teacher scheduling
+As a teacher I want to be able to schedule my courses so i can assign an appropriate room and time for it.
+
+Teacher preference
+As a teacher I want to specify the times I am unable to teach so I will not be assigned a course at that time.
+
+CORE:
+Schedule viewing
+As a user I want to be able to view a schedule specific to me, a room, a course or a programme.
+
+CORE:
+Statistics viewing
+As a user I want to be able to see the statistics from previous years - room utilization, teacher workload
+
+
+
+SCHEDULING A COURSE 
+1. Comitee member goes to the scheduling page 
+2. The system displays the table of scheduled courses and a list of unscheduled courses for current semester
+	- fetch all courses from persistent storage
+	- filter current semester
+	- divide into scheduled / unscheduled
+	- display accordingly
+
+3. Comitee member can filter the displayed courses by year, teacher, name
+	- filter the courses based on user input
+
+4. Comitee member selects a course to schedule
+	- load course-specific information and constraints
+5. The system displays available teachers and times for that course and appropriate rooms (satisfying room types and capacity)
+	- find teacher teaching the course and fetch their schedules
+	- find rooms with enough capacity matching the room types
+6. Comitee member selects the teacher, time and room
+	- check room schedule for conflicts
+7. The system logs the course schedule information
+	- store course schedule to persistent database
+	- update all dependent views and caches
+	- notify teachers assigned to the course
+
+
+
+
+
+
+
+
+
+
+

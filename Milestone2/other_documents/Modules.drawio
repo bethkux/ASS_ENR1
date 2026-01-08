@@ -1,0 +1,235 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0" version="29.2.0">
+  <diagram name="Page-1" id="6lWdYjEJEutlgLQrcqCO">
+    <mxGraphModel dx="3073" dy="1529" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="0oOtCwjomLrup3Om3iVR-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" value="-----" vertex="1">
+          <mxGeometry height="300" width="480" x="723" y="437" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-52" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6d8764;fontColor=#ffffff;strokeColor=#3A5431;" value="" vertex="1">
+          <mxGeometry height="370" width="423" x="1687" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-53" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;Schedule viewer&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="373" x="1717" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-54" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" value="Show only schedules user has rights to show" vertex="1">
+          <mxGeometry height="60" width="120" x="1837" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-55" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" value="Detect free days" vertex="1">
+          <mxGeometry height="60" width="120" x="1707" y="686" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-57" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" value="Detect conflicts and other problems" vertex="1">
+          <mxGeometry height="60" width="120" x="1843" y="686" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-58" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" value="Highlight conflicts and free days" vertex="1">
+          <mxGeometry height="60" width="120" x="1707" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-59" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" value="Support for multiple ways of viewing schedules" vertex="1">
+          <mxGeometry height="60" width="120" x="1837" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-60" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" value="Filter available schedules by user role" vertex="1">
+          <mxGeometry height="60" width="120" x="1967" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-61" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e6d0de;strokeColor=#996185;gradientColor=#d5739d;" value="" vertex="1">
+          <mxGeometry height="300" width="570" x="870" y="1120" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-62" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6a00ff;fontColor=#ffffff;strokeColor=#3700CC;" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;Alerter&lt;/span&gt;" vertex="1">
+          <mxGeometry height="60" width="420" x="955" y="1144" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-63" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" value="Alert user about canceled course dates" vertex="1">
+          <mxGeometry height="60" width="120" x="910" y="1234" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-64" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;gradientColor=#ffd966;" value="" vertex="1">
+          <mxGeometry height="378" width="447" x="1673" y="1044" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-65" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0a30a;strokeColor=#BD7000;fontColor=#000000;" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;Course database&lt;/span&gt;" vertex="1">
+          <mxGeometry height="60" width="342" x="1730" y="1074" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-66" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" value="Handle concurrent access to schedules data" vertex="1">
+          <mxGeometry height="60" width="120" x="1843" y="1158" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-67" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" value="Cache frequently accessed schedules data" vertex="1">
+          <mxGeometry height="60" width="120" x="1973" y="1158" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-68" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" value="Fetch schedules data" vertex="1">
+          <mxGeometry height="60" width="120" x="1703" y="1158" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-70" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" value="Show filtering schedules UI" vertex="1">
+          <mxGeometry height="60" width="120" x="1707" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-72" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;Course management presenter&lt;/span&gt;" vertex="1">
+          <mxGeometry height="60" width="420" x="740" y="468" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-73" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" value="Display course info" vertex="1">
+          <mxGeometry height="60" width="120" x="773" y="557" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-74" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" value="Show course creation form" vertex="1">
+          <mxGeometry height="60" width="120" x="903" y="557" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-75" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" value="Show course editing form" vertex="1">
+          <mxGeometry height="60" width="120" x="1033" y="557" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-76" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" value="Display my courses" vertex="1">
+          <mxGeometry height="60" width="120" x="813" y="627" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-77" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" value="" vertex="1">
+          <mxGeometry height="330" width="460" x="1216" y="429" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-78" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;Course scheduling presenter&lt;/span&gt;" vertex="1">
+          <mxGeometry height="60" width="420" x="1238" y="449" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-79" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" value="Show courses based on scheduled/&lt;div&gt;unscheduled info&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="1249" y="609" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-80" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" value="Show room conflict alert" vertex="1">
+          <mxGeometry height="60" width="120" x="1388" y="529" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-81" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" value="Show teacher conflict alert" vertex="1">
+          <mxGeometry height="60" width="120" x="1526" y="529" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-82" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" value="Show course scheduling form" vertex="1">
+          <mxGeometry height="60" width="120" x="1248" y="529" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-84" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" value="Show courses with collisions" vertex="1">
+          <mxGeometry height="60" width="120" x="1391" y="609" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-85" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" value="Show result of overall collision detection" vertex="1">
+          <mxGeometry height="60" width="120" x="1522" y="609" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-86" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" value="" vertex="1">
+          <mxGeometry height="309" width="490" x="719" y="766" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-87" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;Collision detector&lt;/span&gt;" vertex="1">
+          <mxGeometry height="60" width="420" x="751" y="795" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-88" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" value="" vertex="1">
+          <mxGeometry height="340" width="455" x="1216" y="768" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-89" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;Candidate filterer&lt;/span&gt;" vertex="1">
+          <mxGeometry height="60" width="420" x="1238" y="783" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-90" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" value="Filter current semester" vertex="1">
+          <mxGeometry height="60" width="120" x="1227" y="857" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-91" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" value="Filter courses based on user input" vertex="1">
+          <mxGeometry height="60" width="120" x="1377" y="857" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-92" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" value="Find valid teacher for a course" vertex="1">
+          <mxGeometry height="60" width="120" x="1527" y="857" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-93" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" value="Find valid rooms for a course" vertex="1">
+          <mxGeometry height="60" width="120" x="1379" y="1028" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-94" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" value="Detect room conflicts" vertex="1">
+          <mxGeometry height="60" width="120" x="979" y="965" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-95" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" value="Notify teacher that has been assigned to course" vertex="1">
+          <mxGeometry height="60" width="120" x="1080" y="1234" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-96" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" value="Notify teacher to schedule their course" vertex="1">
+          <mxGeometry height="60" width="120" x="1260" y="1234" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-97" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" value="Detect teacher conflicts" vertex="1">
+          <mxGeometry height="60" width="120" x="979" y="885" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-98" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" value="Fetch all courses" vertex="1">
+          <mxGeometry height="60" width="120" x="1843" y="1244" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-99" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" value="Store course schedule" vertex="1">
+          <mxGeometry height="60" width="120" x="1973" y="1244" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-100" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" value="Cashing courses" vertex="1">
+          <mxGeometry height="60" width="120" x="1847" y="1332" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-101" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" value="Fetch course info" vertex="1">
+          <mxGeometry height="60" width="120" x="1703" y="1244" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-102" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" value="Detect insufficiently scheduled courses based on capacity" vertex="1">
+          <mxGeometry height="60" width="120" x="1227" y="947" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-103" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fa6800;fontColor=#000000;strokeColor=#C73500;" value="" vertex="1">
+          <mxGeometry height="330" width="470" x="239" y="1120" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-104" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0a30a;strokeColor=#BD7000;fontColor=#000000;" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;Statistics database&lt;/span&gt;" vertex="1">
+          <mxGeometry height="60" width="420" x="264" y="1160" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-105" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fa6800;fontColor=#000000;strokeColor=#C73500;" value="" vertex="1">
+          <mxGeometry height="330" width="470" x="239" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-106" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0a30a;strokeColor=#BD7000;fontColor=#000000;" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;Statistics presenter&lt;/span&gt;" vertex="1">
+          <mxGeometry height="60" width="420" x="270" y="479" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-107" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fa6800;fontColor=#000000;strokeColor=#C73500;" value="" vertex="1">
+          <mxGeometry height="330" width="470" x="238" y="770" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-108" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0a30a;strokeColor=#BD7000;fontColor=#000000;" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;Statistics calculator&lt;/span&gt;" vertex="1">
+          <mxGeometry height="60" width="420" x="255" y="810" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-109" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" value="Show schedule based on user selection" vertex="1">
+          <mxGeometry height="60" width="120" x="1967" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-110" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" value="Display statistics categories" vertex="1">
+          <mxGeometry height="60" width="120" x="270" y="564" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-111" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" value="Compute statistics for selected category" vertex="1">
+          <mxGeometry height="60" width="120" x="341" y="960" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-112" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" value="Retrieve raw data" vertex="1">
+          <mxGeometry height="60" width="120" x="484" y="1240" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-113" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" value="Cache frequently accessed data" vertex="1">
+          <mxGeometry height="60" width="120" x="349" y="1320" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-114" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" value="Validate data existence for chosen semester" vertex="1">
+          <mxGeometry height="60" width="120" x="484" y="1320" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-115" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" value="Show filtering options" vertex="1">
+          <mxGeometry height="60" width="120" x="418" y="564" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-116" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" value="Show computed statistics" vertex="1">
+          <mxGeometry height="60" width="120" x="568" y="564" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-118" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" value="Store raw historical data" vertex="1">
+          <mxGeometry height="60" width="120" x="349" y="1240" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-120" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" value="Show alert message for invalid selection and nonexistent data" vertex="1">
+          <mxGeometry height="60" width="120" x="342" y="644" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-121" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" value="Display loading states during computation" vertex="1">
+          <mxGeometry height="60" width="120" x="492" y="644" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-122" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" value="Handle missing/duplicate data" vertex="1">
+          <mxGeometry height="60" width="120" x="340" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-123" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" value="Handle calculation errors" vertex="1">
+          <mxGeometry height="60" width="120" x="480" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-127" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" value="Filter results dynamically based on selected statistic category&amp;nbsp;" vertex="1">
+          <mxGeometry height="60" width="120" x="481" y="960" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-130" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" value="Mark schedules as conflicted" vertex="1">
+          <mxGeometry height="60" width="120" x="819" y="965" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-133" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" value="Store room and teacher&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));&quot;&gt;collisions&lt;/span&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="1707" y="1332" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-134" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" value="Show teachers with collisions" vertex="1">
+          <mxGeometry height="60" width="120" x="1391" y="686" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-144" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" value="Check new or edited course against already scheduled ones" vertex="1">
+          <mxGeometry height="60" width="120" x="819" y="885" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-152" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" value="Detect insufficiently scheduled courses based on capacity" vertex="1">
+          <mxGeometry height="60" width="120" x="1527" y="942" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-153" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" value="Show courses already registered" vertex="1">
+          <mxGeometry height="60" width="120" x="1381" y="946" as="geometry" />
+        </mxCell>
+        <mxCell id="0oOtCwjomLrup3Om3iVR-155" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" value="Display my courses" vertex="1">
+          <mxGeometry height="60" width="120" x="973" y="631" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
